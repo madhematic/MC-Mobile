@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/articles"
     tools:context=".ui.recomendations.ArticlesFragment">
 
     <ProgressBar
@@ -38,8 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_article"
+                android:fontFamily="@font/montserrat_bold"
                 android:textAllCaps="true"
-                android:textStyle="bold"
                 android:textSize="18sp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintTop_toTopOf="parent"
