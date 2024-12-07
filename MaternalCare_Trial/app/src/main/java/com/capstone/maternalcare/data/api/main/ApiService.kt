@@ -39,12 +39,6 @@ interface ApiService {
         @Query("email") email: String,
     ): Call<ResponseData>
 
-    @PUT("users/changePassword")
-    fun changePassword(
-        @Query("username") username: String,
-        @Query("password") password: String,
-    ): Call<ResponseData>
-
     @PUT("users/{id}")
     fun updateUser(
         @Path("id") id: Int,
@@ -73,5 +67,12 @@ interface ApiService {
         @Query("id_user") id_user: Int,
         @Query("id_diagnose") id_diagnose: Int,
     ): Call<ResponseHistory>
+
+    @GET("reset-password")
+    fun resetPassword(
+        @Query("email") email: String,
+        @Query("new_password") new_password: String,
+        @Query("confirm_password") confirm_password: String,
+    ): Call<ResponseData>
 
 }
