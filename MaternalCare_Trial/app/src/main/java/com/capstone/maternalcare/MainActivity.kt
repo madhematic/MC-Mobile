@@ -10,6 +10,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -44,22 +45,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupFragment() {
-        val navView: BottomNavigationView = binding.navView
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        val navController =
-            findNavController(R.id.nav_host_fragment_activity_main)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home,
-                R.id.navigation_article,
-                R.id.navigation_profile
-            )
-        )
-        setupActionBarWithNavController(
-            navController,
-            appBarConfiguration
-        )
-        navView.setupWithNavController(navController)
+        // Pastikan BottomNavigationView terhubung dengan benar ke NavController
+        binding.navView.setupWithNavController(navController)
+
+        // Menambahkan listener untuk memanipulasi ActionBar berdasarkan fragment yang sedang aktif
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment -> {
+                    supportActionBar?.apply {
+                        title = getString(R.string.home)
+                        setDisplayHomeAsUpEnabled(false)
+                    }
+                }
+                R.id.profilFragment -> {
+                    supportActionBar?.apply {
+                        title = getString(R.string.profile)
+                        setDisplayHomeAsUpEnabled(false)
+                    }
+                }
+                R.id.articlesFragment -> {
+                    supportActionBar?.apply {
+                        title = getString(R.string.articles)
+                        setDisplayHomeAsUpEnabled(false)
+                    }
+                }
+            }
+        }
     }
 
     private fun setupViewModel() {
