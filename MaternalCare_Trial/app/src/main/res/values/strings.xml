@@ -36,8 +36,17 @@
     <string name="news_images">News Images</string>
     <string name="title_history">History </string>
 
+    <string name="profile">Profile</string>
+    <string name="articles">Articles</string>
 
-
+    <string name="new_password">New Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="hpl">Hpl</string>
+    <string name="kondisi">Normal/Medium/Risk</string>
+    <string name="already_have_account">Already have an account? Login</string>
+    <string name="edit_profile">edit profil</string>
 
 
 
